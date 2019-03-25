@@ -2,7 +2,7 @@
 // Version: 
 // Date:	
 
-package uppgift1;
+package uppgift2;
 
 import java.io.IOException;
 import java.io.Reader;
