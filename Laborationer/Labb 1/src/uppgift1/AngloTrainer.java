@@ -4,13 +4,19 @@
 
 package uppgift1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AngloTrainer {
 	// ...
 
 	public AngloTrainer(String dictionaryFile) throws IOException {
 	    // ... define!
+		loadDictionary(dictionaryFile);
 	}
 
 	// use this to verify loadDictionary
@@ -23,6 +29,24 @@ public class AngloTrainer {
 	    // Read the dictionary into a suitable container.
 	    // The file is a simple text file. One word per line.
           // ... define!
+		
+    	Scanner scan = null;
+        File file = new File(fileName);
+        ArrayList<String> list;
+
+        try {
+            scan = new Scanner(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        list = new ArrayList<String>();
+
+        while((scan.nextLine()) != null){
+            list.add(scan.next());
+        }
+
+        String[] stringArr = list.toArray(new String[0]);
 	}
 
 	private String randomLetters( int length ) {
@@ -93,6 +117,14 @@ public class AngloTrainer {
 
     public static void main(String[] args) {
         // ... define!
+    	System.out.println(" Test och skriv vilka engelska ord du kan bilda utav 'dahap': ");
+    	try {
+			AngloTrainer angloTrainer = new AngloTrainer(args[0]);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     }
 }
 
