@@ -43,9 +43,9 @@ public class AngloTrainer {
         }
 
         list = new ArrayList<String>();
-
-        while((scan.nextLine()) != null){
-            list.add(scan.next());
+       
+        while(scan.hasNext()){        	
+            list.add(scan.nextLine());           
         }
 
         String[] stringArr = list.toArray(new String[0]);
