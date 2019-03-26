@@ -75,6 +75,7 @@ public class WordLists {
 		wl.computeBackwardsOrder();
 		
 		System.out.println("Finished!");
+		System.out.println("gedda!");
 	}
 }
 
