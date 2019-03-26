@@ -8,47 +8,45 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.TreeSet;
 import java.util.Random;
 
 
 public class AngloTrainer {
 	// ...
-
+	TreeSet<String> wordlist;
 	public AngloTrainer(String dictionaryFile) throws IOException {
-	    // ... define!
+		wordlist = new TreeSet<String>();
 		loadDictionary(dictionaryFile);
+		dumpDict();
 	}
 
 	// use this to verify loadDictionary
 	private void dumpDict() {
 	    // Print out the dictionary at the screen.
-          // ... define!
+		Iterator<String> it = wordlist.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
 	}
 
 	private void loadDictionary( String fileName ) {
 	    // Read the dictionary into a suitable container.
-	    // The file is a simple text file. One word per line.
-          // ... define!
-		
+	    // The file is a simple text file. One word per line.		
     	Scanner scan = null;
         File file = new File(fileName);
-        ArrayList<String> list;
 
         try {
             scan = new Scanner(new FileReader(file));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        list = new ArrayList<String>();
        
         while(scan.hasNext()){        	
-            list.add(scan.nextLine());           
+            wordlist.add(scan.nextLine());       
         }
-
-        String[] stringArr = list.toArray(new String[0]);
 	}
 
 	private String randomLetters( int length ) {
