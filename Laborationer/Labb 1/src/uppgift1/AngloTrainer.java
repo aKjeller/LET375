@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class AngloTrainer {
 	// ...
@@ -51,6 +53,8 @@ public class AngloTrainer {
 
 	private String randomLetters( int length ) {
 	    // this makes vovels a little more likely
+		Random randomGenerator = new Random();
+		
 	    String letters = "aabcdeefghiijklmnoopqrstuuvwxyyz";  
 	    StringBuffer buf = new StringBuffer(length);
 	    for ( int i = 0; i < length; i++ ) 
