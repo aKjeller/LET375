@@ -26,9 +26,8 @@ public class AngloTrainer {
 	// use this to verify loadDictionary
 	private void dumpDict() {
 	    // Print out the dictionary at the screen.
-		Iterator<String> it = wordlist.iterator();
-		while(it.hasNext()) {
-			System.out.println(it.next());
+		for(String w : wordlist) {
+		    System.out.println(w);
 		}
 	}
 
