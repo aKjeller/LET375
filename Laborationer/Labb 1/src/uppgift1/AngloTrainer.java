@@ -14,9 +14,7 @@ import java.util.Scanner;
 import java.util.TreeSet;
 import java.util.Random;
 
-
 public class AngloTrainer {
-	// ...
 	TreeSet<String> wordlist = new TreeSet<String>();
 	int longestWord;
 	
