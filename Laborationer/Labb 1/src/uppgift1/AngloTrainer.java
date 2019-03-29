@@ -18,12 +18,11 @@ import java.util.Random;
 public class AngloTrainer {
 	// ...
 	TreeSet<String> wordlist = new TreeSet<String>();
-	String randomLetters;
 	int longestWord;
 	
 	public AngloTrainer(String dictionaryFile) throws IOException {
 		loadDictionary(dictionaryFile);
-		randomLetters = randomLettersGenerator(longestWord);	
+		String randomLetters = randomLettersGenerator(longestWord);	
 		System.out.println("The random letters are: " + randomLetters);
 		System.out.println("Try to build as many words from these letters as you can!");
 		
@@ -44,6 +43,7 @@ public class AngloTrainer {
 					System.out.println("ok!");
 				}
 			}
+			sc.close();
 			throw new Exception();
 	
 		} catch (Exception e) {
@@ -59,7 +59,6 @@ public class AngloTrainer {
 	}
 	
 	private String sortString(String s) {
-		s.toLowerCase();
         char[] charArray = s.toCharArray();
         Arrays.sort(charArray);
         return String.valueOf(charArray);
@@ -168,7 +167,6 @@ public class AngloTrainer {
     	try {
 			AngloTrainer angloTrainer = new AngloTrainer(args[0]);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
