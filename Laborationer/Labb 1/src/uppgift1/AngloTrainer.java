@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -16,11 +17,53 @@ import java.util.Random;
 
 public class AngloTrainer {
 	// ...
-	TreeSet<String> wordlist;
+	TreeSet<String> wordlist = new TreeSet<String>();
+	String randomLetters;
+	int longestWord;
+	
 	public AngloTrainer(String dictionaryFile) throws IOException {
-		wordlist = new TreeSet<String>();
 		loadDictionary(dictionaryFile);
-		dumpDict();
+		randomLetters = randomLettersGenerator(longestWord);	
+		System.out.println("The random letters are: " + randomLetters);
+		System.out.println("Try to build as many words from these letters as you can!");
+		
+		try {
+			Boolean failed = false;
+			Scanner sc = new Scanner(System. in); 
+			while(!failed) {
+				String input = sc.nextLine();
+				if(!includes(sortString(randomLetters),sortString(input))) {
+					System.out.println("The word: " + input + " is not possible to build from the letters: " + randomLetters);
+					failed = true;
+				}
+				else if(!wordlist.contains(input)) {
+					System.out.println("Your suggestion was not found in the dictionary.");		
+					failed = true;
+				}		
+				else {
+					System.out.println("ok!");
+				}
+			}
+			throw new Exception();
+	
+		} catch (Exception e) {
+			System.out.println("I found:");
+			for(String word : wordlist) {
+				if(includes(sortString(randomLetters),sortString(word))) {
+					System.out.println(word);
+				}
+			}
+		}
+		
+		
+	}
+	
+	private String sortString(String s) {
+		s.toLowerCase();
+        char[] charArray = s.toCharArray();
+        Arrays.sort(charArray);
+        return String.valueOf(charArray);
+        
 	}
 
 	// use this to verify loadDictionary
@@ -36,7 +79,6 @@ public class AngloTrainer {
 	    // The file is a simple text file. One word per line.		
     	Scanner scan = null;
         File file = new File(fileName);
-
         try {
             scan = new Scanner(new FileReader(file));
         } catch (FileNotFoundException e) {
@@ -44,11 +86,16 @@ public class AngloTrainer {
         }
        
         while(scan.hasNext()){        	
-            wordlist.add(scan.nextLine());       
+        	String next = scan.nextLine();
+        	if(next.length() > longestWord)
+        		longestWord = next.length();
+        	
+            wordlist.add(next);       
         }
+        System.out.println(wordlist.size()+ " words loaded from " + fileName);
 	}
 
-	private String randomLetters( int length ) {
+	private String randomLettersGenerator( int length ) {
 	    // this makes vovels a little more likely
 		Random randomGenerator = new Random();
 		
@@ -118,7 +165,6 @@ public class AngloTrainer {
 
     public static void main(String[] args) {
         // ... define!
-    	System.out.println(" Test och skriv vilka engelska ord du kan bilda utav 'dahap': ");
     	try {
 			AngloTrainer angloTrainer = new AngloTrainer(args[0]);
 		} catch (IOException e) {
