@@ -4,14 +4,37 @@
 
 package uppgift2;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.util.Comparator;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class WordLists {
 	private Reader in = null;
+	
+	File file;
+	FileInputStream iS;
+	String input;
+	PrintWriter writer; 
+	
+	TreeMap<String,Integer> wordFrequencies = new TreeMap<String, Integer>();
 
 	public WordLists(String inputFileName) {
 	    // ... define!
+		file = new File(inputFileName);
+		try {
+			in = new FileReader(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private boolean isPunctuationChar(char c) {
@@ -53,7 +76,25 @@ public class WordLists {
 	}
 	
 	private void computeWordFrequencies() {
-          // define!
+          try {
+        	  writer = new PrintWriter("alfaSorted.txt", "UTF-8");
+        	  
+        	  while((input = getWord()) != null) {
+        		  if(!wordFrequencies.containsKey(input)) {
+        			  wordFrequencies.putIfAbsent(input, 1);
+        		  } else {
+        			  wordFrequencies.put(input, wordFrequencies.get(input) + 1);
+        		  }
+        	  }
+        	  
+        	  
+        	  
+        	  
+        	  
+        	  
+          } catch (IOException e) {
+        	  e.printStackTrace();
+          }
 	}
 	
 
@@ -64,6 +105,18 @@ public class WordLists {
 
 	private void computeBackwardsOrder() {
 	    // define!
+		TreeSet<String> backwards = new TreeSet<String>(new ReverseStringComparator());
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter("backwardsSorted.txt"));
+			
+			
+			
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -75,7 +128,13 @@ public class WordLists {
 		wl.computeBackwardsOrder();
 		
 		System.out.println("Finished!");
-		System.out.println("gedda!");
+	}
+	
+	private class ReverseStringComparator implements Comparator<String> {
+		@Override
+		public int compare(String a, String b) {
+			return ((reverse(a)).compareTo(reverse(b)));
+		}
 	}
 }
 
