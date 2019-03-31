@@ -15,6 +15,7 @@ import java.util.Random;
 
 public class AngloTrainer {
 	TreeSet<String> wordlist = new TreeSet<String>();
+	TreeSet<String> correctWords = new TreeSet<String>();
 	int longestWord;
 	
 	public AngloTrainer(String dictionaryFile) throws IOException {
@@ -23,20 +24,27 @@ public class AngloTrainer {
 		System.out.println("The random letters are: " + randomLetters);
 		System.out.println("Try to build as many words from these letters as you can!");
 		
+		for(String word : wordlist) {
+			if(includes(sortString(randomLetters),sortString(word))) {
+				correctWords.add(word);
+			}
+		}
+			
 		try {
 			Boolean failed = false;
-			Scanner sc = new Scanner(System. in); 
+			Scanner sc = new Scanner(System.in); 
 			while(!failed) {
 				String input = sc.nextLine();
 				if(!includes(sortString(randomLetters),sortString(input))) {
 					System.out.println("The word: " + input + " is not possible to build from the letters: " + randomLetters);
 					failed = true;
 				}
-				else if(!wordlist.contains(input)) {
+				else if(!correctWords.contains(input)) {
 					System.out.println("Your suggestion was not found in the dictionary.");		
 					failed = true;
 				}		
 				else {
+					correctWords.remove(input);
 					System.out.println("ok!");
 				}
 			}
@@ -45,14 +53,10 @@ public class AngloTrainer {
 	
 		} catch (Exception e) {
 			System.out.println("I found:");
-			for(String word : wordlist) {
-				if(includes(sortString(randomLetters),sortString(word))) {
-					System.out.println(word);
-				}
+			for(String word : correctWords) {
+				System.out.println(word);
 			}
-		}
-		
-		
+		}		
 	}
 	
 	private String sortString(String s) {
