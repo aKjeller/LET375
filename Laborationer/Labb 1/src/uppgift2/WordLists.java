@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -87,9 +89,11 @@ public class WordLists {
         		  }
         	  }
         	  
+        	  for(Map.Entry<String,Integer> entry : wordFrequencies.entrySet()) {
+        		  writer.println(entry.getKey() + "  " + entry.getValue());
+        	  }
         	  
-        	  
-        	  
+        	  writer.close();
         	  
         	  
           } catch (IOException e) {
