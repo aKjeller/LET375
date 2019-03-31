@@ -109,17 +109,6 @@ public class WordLists {
 	private void computeBackwardsOrder() {
 	    // define!
 		TreeSet<String> backwards = new TreeSet<String>(new ReverseStringComparator());
-		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter("backwardsSorted.txt"));
-			
-			
-			
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 	public static void main(String[] args) throws IOException {
