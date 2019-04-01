@@ -25,7 +25,7 @@ public class WordLists {
 	PrintWriter writer; 
 	
 	TreeMap<String,Integer> wordFrequencies = new TreeMap<String, Integer>();
-	TreeMap<String,TreeSet<String>> asd = new TreeMap<String,TreeSet<String>>();
+	TreeMap<Integer,TreeSet<String>> frequencyMap = new TreeMap<Integer,TreeSet<String>>();
 
 	public WordLists(String inputFileName) {
 	    // ... define!
@@ -98,8 +98,31 @@ public class WordLists {
           }
 	}
 	
-
 	private void computeFrequencyMap() {
+		
+		try {
+			writer = new PrintWriter("frequencySorted.txt", "UTF-8");
+			
+			for(Map.Entry<String,Integer> entry : wordFrequencies.entrySet()) {
+				if(!frequencyMap.containsKey(entry.getValue())) {
+					frequencyMap.putIfAbsent(entry.getValue(), new TreeSet<String>());
+					frequencyMap.get(entry.getValue()).add(entry.getKey());
+				}
+				else {
+					frequencyMap.get(entry.getValue()).add(entry.getKey());
+				}
+			}
+			
+			for(Integer entry : frequencyMap.descendingKeySet()) {
+      		  	writer.println(entry +":");
+	  			for(String word : frequencyMap.get(entry)) {
+	  				writer.println("	" + word);
+				}    		  
+			}
+			writer.close();
+        } catch (IOException e) {
+      	  	e.printStackTrace();
+        }
           
 	}
 	
