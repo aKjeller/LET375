@@ -27,7 +27,6 @@ public class WordLists {
 	TreeMap<String,Integer> wordFrequencies = new TreeMap<String, Integer>();
 
 	public WordLists(String inputFileName) {
-	    // ... define!
 		file = new File(inputFileName);
 		try {
 			in = new FileReader(file);
@@ -71,10 +70,10 @@ public class WordLists {
 	}
 	
 	private String reverse(String s) {
-		String reverse="";
+		String reverse = "";
 		
-		for(int i=s.length()-1;i>=0;i-- ) {
-			reverse = reverse +s.charAt(i);
+		for(int i = s.length()-1; i >= 0; i-- ) {
+			reverse = reverse + s.charAt(i);
 		}
 	    return reverse;
 	}
