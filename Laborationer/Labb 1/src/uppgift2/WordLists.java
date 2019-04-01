@@ -1,6 +1,6 @@
-// Author(s):
-// Version: 
-// Date:	
+// Author(s): Markus Gedda, Alfred Kjeller
+// Version: 1.0
+// Date: 2019-03-31
 
 package uppgift2;
 
