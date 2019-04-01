@@ -1,6 +1,6 @@
-// Author(s):
-// Version: 
-// Date:	
+// Author(s): Markus Gedda, Alfred Kjeller
+// Version: 1.0
+// Date: 2019-03-31
 
 package uppgift2;
 
@@ -27,7 +27,6 @@ public class WordLists {
 	TreeMap<String,Integer> wordFrequencies = new TreeMap<String, Integer>();
 
 	public WordLists(String inputFileName) {
-	    // ... define!
 		file = new File(inputFileName);
 		try {
 			in = new FileReader(file);
@@ -71,10 +70,10 @@ public class WordLists {
 	}
 	
 	private String reverse(String s) {
-		String reverse="";
+		String reverse = "";
 		
-		for(int i=s.length()-1;i>=0;i-- ) {
-			reverse = reverse +s.charAt(i);
+		for(int i = s.length()-1; i >= 0; i-- ) {
+			reverse = reverse + s.charAt(i);
 		}
 	    return reverse;
 	}
@@ -126,8 +125,7 @@ public class WordLists {
 			writer.close();
         } catch (IOException e) {
       	  	e.printStackTrace();
-        }
-          
+        }      
 	}
 	
 
@@ -148,21 +146,16 @@ public class WordLists {
         } catch (IOException e) {
       	  	e.printStackTrace();
         }
-		
-		
-		
 	}
 
-	public static void main(String[] args) throws IOException {
-		
+	public static void main(String[] args) throws IOException {	
 		
 		WordLists wl = new WordLists(args[0]);  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
 		
-		System.out.println("Finished!");
-		
+		System.out.println("Finished!");	
 	}
 	
 	private class ReverseStringComparator implements Comparator<String> {
