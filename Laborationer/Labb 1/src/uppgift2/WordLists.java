@@ -25,6 +25,7 @@ public class WordLists {
 	PrintWriter writer; 
 	
 	TreeMap<String,Integer> wordFrequencies = new TreeMap<String, Integer>();
+	TreeMap<String,TreeSet<String>> asd = new TreeMap<String,TreeSet<String>>();
 
 	public WordLists(String inputFileName) {
 	    // ... define!
@@ -99,7 +100,7 @@ public class WordLists {
 	
 
 	private void computeFrequencyMap() {
-          // define!
+          
 	}
 	
 
