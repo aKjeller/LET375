@@ -25,7 +25,6 @@ public class WordLists {
 	PrintWriter writer; 
 	
 	TreeMap<String,Integer> wordFrequencies = new TreeMap<String, Integer>();
-	TreeMap<Integer,TreeSet<String>> frequencyMap = new TreeMap<Integer,TreeSet<String>>();
 
 	public WordLists(String inputFileName) {
 	    // ... define!
@@ -72,7 +71,12 @@ public class WordLists {
 	}
 	
 	private String reverse(String s) {
-	    return null;
+		String reverse="";
+		
+		for(int i=s.length()-1;i>=0;i-- ) {
+			reverse = reverse +s.charAt(i);
+		}
+	    return reverse;
 	}
 	
 	private void computeWordFrequencies() {
@@ -99,7 +103,7 @@ public class WordLists {
 	}
 	
 	private void computeFrequencyMap() {
-		
+		TreeMap<Integer,TreeSet<String>> frequencyMap = new TreeMap<Integer,TreeSet<String>>();	
 		try {
 			writer = new PrintWriter("frequencySorted.txt", "UTF-8");
 			
@@ -128,8 +132,25 @@ public class WordLists {
 	
 
 	private void computeBackwardsOrder() {
-	    // define!
-		TreeSet<String> backwards = new TreeSet<String>(new ReverseStringComparator());
+		TreeSet<String> backwardsSet = new TreeSet<String>(new ReverseStringComparator());
+		try {
+			writer = new PrintWriter("backwardsSorted.txt", "UTF-8");
+			
+			for(String word : wordFrequencies.keySet()) {
+				backwardsSet.add(word);
+			}
+			
+			for(String word : backwardsSet) {
+				writer.println(word);
+			}
+			
+			writer.close();
+        } catch (IOException e) {
+      	  	e.printStackTrace();
+        }
+		
+		
+		
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -141,6 +162,7 @@ public class WordLists {
 		wl.computeBackwardsOrder();
 		
 		System.out.println("Finished!");
+		
 	}
 	
 	private class ReverseStringComparator implements Comparator<String> {
