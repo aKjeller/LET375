@@ -125,8 +125,7 @@ public class WordLists {
 			writer.close();
         } catch (IOException e) {
       	  	e.printStackTrace();
-        }
-          
+        }      
 	}
 	
 
@@ -147,21 +146,16 @@ public class WordLists {
         } catch (IOException e) {
       	  	e.printStackTrace();
         }
-		
-		
-		
 	}
 
-	public static void main(String[] args) throws IOException {
-		
+	public static void main(String[] args) throws IOException {	
 		
 		WordLists wl = new WordLists(args[0]);  // arg[0] contains the input file name
 		wl.computeWordFrequencies();
 		wl.computeFrequencyMap();
 		wl.computeBackwardsOrder();
 		
-		System.out.println("Finished!");
-		
+		System.out.println("Finished!");	
 	}
 	
 	private class ReverseStringComparator implements Comparator<String> {
