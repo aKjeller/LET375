@@ -11,6 +11,17 @@ import java.util.function.*;
 public class CollectionOps {
 
     // Put your code for print here ... 
+	public static <T> void print(Collection<T> l) {
+		
+		T[] y = l.toArray(new T[]);
+		
+		//String[] y = x.toArray(new String[0]);
+		for(T t: y) {
+			System.out.print(t+" ");
+			
+		}
+		
+	}
     
     // Put your code for reverse here ...
 
