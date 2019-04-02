@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestSingleBuffer {
 	
@@ -7,6 +9,9 @@ public class TestSingleBuffer {
 		
 
         //  Define the object stringBuf of type SingleBuffer here...
+        
+       
+		SingleBuffer<String> stringBuf = new SingleBuffer<>();
 
 
 
