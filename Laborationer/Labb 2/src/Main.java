@@ -57,9 +57,30 @@ public class Main {
          System.out.println(less(li1,li3,intcomp));
 
          // Assignment 5: Write code to test map here
-             
+         List<Double> l1 = new ArrayList<Double>(); 
+         l1.add(5.668);
+         l1.add(-4.3);
+         l1.add(0.0);
+         l1.add(9.32);
+         l1.add(-3.98);
+         l1.add(0.0);
+         
+         Collection<Integer> l2 = map(new Sign(),l1);
+         print(l2); 
+         
+         
          // Assignment 5: Write code to test filter here
-
+         List<Integer> l3 = new ArrayList<Integer>(); 
+         l3.add(5);
+         l3.add(4);
+         l3.add(3);
+         l3.add(0);
+         l3.add(8);
+         l3.add(9);
+         
+         Collection<Integer> l4 = filter(new isEven(),l3);
+         System.out.println();
+         print(l4); 
 //         ArrayList<Person> pl = new ArrayList<>();
 //         pl.add(new Person("Nisse","nisse@hipnet.moc","male",23));
 //         pl.add(new Person("Lisa","lisa@shipnet.sea","female",67));
