@@ -1,7 +1,6 @@
 package collection;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Collections;
@@ -33,11 +32,12 @@ public class CollectionOps {
 		return l;		
 	}
 	
+	//code for less here 
 	public static <T> boolean less(Collection<T> c1, Collection<T> c2,Comparator<T> comp) {
 		return (-1 == comp.compare(Collections.max(c1, comp), Collections.min(c2, comp)));
 	}
         
-    // Example
+    // Map example
     public static <T,R> Collection<R> map(Function<T,R> f,Collection<T> c) {
         // Determine the dynamic type of the collection
         Class<? extends Collection> cls = c.getClass();
@@ -55,7 +55,7 @@ public class CollectionOps {
             return null;
         }
     }
-    
+    //Filter example 
     public static <T> Collection<T> filter(Predicate <T> f,Collection<T> c) {
         // Determine the dynamic type of the collection
         Class<? extends Collection> cls = c.getClass();
