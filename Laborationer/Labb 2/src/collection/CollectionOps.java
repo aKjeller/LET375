@@ -56,6 +56,24 @@ public class CollectionOps {
         }
     }
     
+    public static <T> Collection<T> filter(Predicate <T> f,Collection<T> c) {
+        // Determine the dynamic type of the collection
+        Class<? extends Collection> cls = c.getClass();
+        try {
+            // Create an object of the same dynamic type as c
+            Collection<T> result = (Collection<T>)cls.newInstance();
+            // type.cast(type.newInstance());
+            // Copy the elements and apply op to them
+            for ( T x : c )
+            	if(f.test(x))
+            		result.add(x);
+            return result;   
+        }   
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     // Put your code for filter here ...
 
 }
