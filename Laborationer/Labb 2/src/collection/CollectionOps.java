@@ -34,14 +34,7 @@ public class CollectionOps {
 	}
 	
 	public static <T> boolean less(Collection<T> c1, Collection<T> c2,Comparator<T> comp) {
-		for(T e1 : c1) {
-			for(T e2 : c2) {
-				if(comp.compare(e1, e2) >= 0) {
-					return false;
-				}
-			}
-		}	
-		return true;	
+		return (-1 == comp.compare(Collections.max(c1, comp), Collections.min(c2, comp)));
 	}
         
     // Example
