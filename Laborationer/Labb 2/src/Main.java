@@ -82,12 +82,12 @@ public class Main {
          System.out.println();
          print(l4); 
          
-//         ArrayList<Person> pl = new ArrayList<>();
-//         pl.add(new Person("Nisse","nisse@hipnet.moc","male",23));
-//         pl.add(new Person("Lisa","lisa@shipnet.sea","female",67));
-//         pl.add(new Person("Ada","ada@jahuu.vanu","female",49));
-//         pl.add(new Person("Kal","karl@gotnet.vg","male",78));
-//         pl.add(new Person("Beda","beda@fishnet.cod","female",102));
+         ArrayList<Person> pl = new ArrayList<>();
+         pl.add(new Person("Nisse","nisse@hipnet.moc","male",23));
+         pl.add(new Person("Lisa","lisa@shipnet.sea","female",67));
+         pl.add(new Person("Ada","ada@jahuu.vanu","female",49));
+         pl.add(new Person("Kal","karl@gotnet.vg","male",78));
+         pl.add(new Person("Beda","beda@fishnet.cod","female",102));
         
          // Assignment 6: Write code using lambdas here
     }
