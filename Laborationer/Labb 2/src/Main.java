@@ -82,14 +82,19 @@ public class Main {
          System.out.println();
          print(l4); 
          
-         ArrayList<Person> pl = new ArrayList<>();
-         pl.add(new Person("Nisse","nisse@hipnet.moc","male",23));
-         pl.add(new Person("Lisa","lisa@shipnet.sea","female",67));
-         pl.add(new Person("Ada","ada@jahuu.vanu","female",49));
-         pl.add(new Person("Kal","karl@gotnet.vg","male",78));
-         pl.add(new Person("Beda","beda@fishnet.cod","female",102));
+         ArrayList<Person> p1 = new ArrayList<>();
+         p1.add(new Person("Nisse","nisse@hipnet.moc","male",23));
+         p1.add(new Person("Lisa","lisa@shipnet.sea","female",67));
+         p1.add(new Person("Ada","ada@jahuu.vanu","female",49));
+         p1.add(new Person("Kal","karl@gotnet.vg","male",78));
+         p1.add(new Person("Beda","beda@fishnet.cod","female",102));
         
          // Assignment 6: Write code using lambdas here
+         ArrayList<String> p2 = new ArrayList<>();
+         map(x ->{ if(x.getAge()>= 65 && x.getGender() == "female") return p2.add(x.getEmail()); else return null;}, p1);
+         System.out.println();
+         print(p2);
+         
     }
 }
 
