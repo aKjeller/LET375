@@ -55,7 +55,7 @@ public class CollectionOps {
             return null;
         }
     }
-    //Filter example 
+ // Put your code for filter here ...
     public static <T> Collection<T> filter(Predicate <T> f,Collection<T> c) {
         // Determine the dynamic type of the collection
         Class<? extends Collection> cls = c.getClass();
@@ -74,6 +74,4 @@ public class CollectionOps {
             return null;
         }
     }
-    // Put your code for filter here ...
-
 }

@@ -1,19 +1,10 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TestSingleBuffer {
 	
     public static void main(String[] args) throws IOException  {
-        BufferedReader in  = new BufferedReader(new InputStreamReader(System.in));
-		
-
-        //  Define the object stringBuf of type SingleBuffer here...
-        
-       
+        BufferedReader in  = new BufferedReader(new InputStreamReader(System.in));      
 		SingleBuffer<String> stringBuf = new SingleBuffer<>();
-
-
 
         while ( true ) {
             System.out.print("Command (p/g/q): "); 
