@@ -22,7 +22,7 @@ public class CollectionOps {
 		}
 		System.out.print("]");
 	}
-    
+	
     // Put your code for reverse here ...
 	public static <T> List<T> reverse(List<T> l){
 		for(int i = 0; i < l.size()/2; i++) {
@@ -32,13 +32,20 @@ public class CollectionOps {
 		}	
 		return l;		
 	}
-
-    // Put your code for less here ...
-    
+	
+	public static <T> boolean less(Collection<T> c1, Collection<T> c2,Comparator<T> comp) {
+		for(T e1 : c1) {
+			for(T e2 : c2) {
+				if(comp.compare(e1, e2) >= 0) {
+					return false;
+				}
+			}
+		}	
+		return true;	
+	}
+        
     // Example
-    public static <T,R> Collection<R>
-    map(Function<T,R> f,Collection<T> c) 
-    {
+    public static <T,R> Collection<R> map(Function<T,R> f,Collection<T> c) {
         // Determine the dynamic type of the collection
         Class<? extends Collection> cls = c.getClass();
         try {

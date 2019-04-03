@@ -34,6 +34,27 @@ public class Main {
          System.out.println();
 
          // Assignment 4: Write code to test less here 
+         IntegerComparator intcomp = new IntegerComparator(); 
+         List<Integer> li1 = new ArrayList<Integer>(); 
+         li1.add(4);
+         li1.add(2);
+         li1.add(1);
+         li1.add(5);
+         li1.add(3);
+         List<Integer> li2 = new ArrayList<Integer>(); 
+         li2.add(8);
+         li2.add(6);
+         li2.add(7);
+         li2.add(9);
+         List<Integer> li3 = new ArrayList<Integer>(); 
+         li3.add(8);
+         li3.add(3);
+         li3.add(7);
+         li3.add(9);
+         
+         System.out.println(less(li1,li2,intcomp));
+         System.out.println(less(li2,li1,intcomp));
+         System.out.println(less(li1,li3,intcomp));
 
          // Assignment 5: Write code to test map here
              
