@@ -81,6 +81,7 @@ public class Main {
          Collection<Integer> l4 = filter(new isEven(),l3);
          System.out.println();
          print(l4); 
+         
 //         ArrayList<Person> pl = new ArrayList<>();
 //         pl.add(new Person("Nisse","nisse@hipnet.moc","male",23));
 //         pl.add(new Person("Lisa","lisa@shipnet.sea","female",67));
