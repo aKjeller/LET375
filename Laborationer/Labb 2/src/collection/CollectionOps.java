@@ -12,15 +12,15 @@ public class CollectionOps {
 
     // Put your code for print here ... 
 	public static <T> void print(Collection<T> l) {
+		Iterator<T> it = l.iterator();
 		
-		T[] y = l.toArray(new T[]);
-		
-		//String[] y = x.toArray(new String[0]);
-		for(T t: y) {
-			System.out.print(t+" ");
-			
+		System.out.print("[");
+		while(it.hasNext()) {
+			System.out.print(it.next());
+			if(it.hasNext())
+				System.out.print(",");
 		}
-		
+		System.out.print("]");
 	}
     
     // Put your code for reverse here ...
