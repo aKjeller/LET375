@@ -24,6 +24,14 @@ public class CollectionOps {
 	}
     
     // Put your code for reverse here ...
+	public static <T> List<T> reverse(List<T> l){
+		for(int i = 0; i < l.size()/2; i++) {
+			T temp = l.get(i);
+			l.set(i, l.get(l.size()-1-i));
+			l.set(l.size()-1-i, temp);
+		}	
+		return l;		
+	}
 
     // Put your code for less here ...
     

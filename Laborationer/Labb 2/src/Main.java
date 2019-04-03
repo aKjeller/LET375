@@ -27,7 +27,7 @@ public class Main {
          print(names); System.out.println();
          
          // Test the return value from reverse
-//         print(reverse(names));
+         print(reverse(names));
          System.out.println();
          // Test that reverse mutates its argument
          print(names);
