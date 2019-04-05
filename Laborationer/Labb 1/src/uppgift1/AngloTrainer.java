@@ -24,8 +24,9 @@ public class AngloTrainer {
 		System.out.println("The random letters are: " + randomLetters);
 		System.out.println("Try to build as many words from these letters as you can!");
 		
+		String sortedRandomLetters = sortString(randomLetters);
 		for(String word : wordlist) {
-			if(includes(sortString(randomLetters),sortString(word))) {
+			if(includes(sortedRandomLetters,sortString(word))) {
 				correctWords.add(word);
 			}
 		}
