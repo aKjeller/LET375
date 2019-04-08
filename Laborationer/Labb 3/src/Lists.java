@@ -129,17 +129,34 @@ public class Lists {
     
     // Testmetod: JunitListTest.testAddFirst()
     public static ListNode addFirst(ListNode l,char c) {  
-        return null;
+    	if(l == null)
+    		throw new ListsException("Lists: null passed to addFirst");
+    	l.element = c;
+    	ListNode p = new ListNode();
+    	p.next = l;
+    	return p;
+    	
     }
          
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
-        return null;
+    	if(head == null)
+    		throw new ListsException("Lists: null passed to getLastNode");
+    	ListNode p = head.next;
+    	while(p != null) {
+    		p = p.next;
+    	}	
+        return p;
     }
    
     // Testmetod: JunitListTest.testAddLast()
     public static ListNode addLast(ListNode l,char c) {  
-        return null;
+    	if(l == null)
+    		throw new ListsException("Lists: null passed to addLast");
+    	ListNode p = getLastNode(l);
+    	p.next = new ListNode();
+    	p.next.element = c;
+    	return l;
     }
     
     // Testmetod: JunitListTest.testConcat()
