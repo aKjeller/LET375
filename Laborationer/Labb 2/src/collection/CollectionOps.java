@@ -34,7 +34,7 @@ public class CollectionOps {
 	
 	//code for less here 
 	public static <T> boolean less(Collection<T> c1, Collection<T> c2,Comparator<T> comp) {
-		return (-1 == comp.compare(Collections.max(c1, comp), Collections.min(c2, comp)));
+		return (0 > comp.compare(Collections.max(c1, comp), Collections.min(c2, comp)));
 	}
         
     // Map example
