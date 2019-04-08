@@ -90,10 +90,11 @@ public class Main {
          p1.add(new Person("Beda","beda@fishnet.cod","female",102));
         
          // Assignment 6: Write code using lambdas here
-         ArrayList<String> p2 = new ArrayList<>();
-         map(x ->{ if(x.getAge()>= 65 && x.getGender() == "female") return p2.add(x.getEmail()); else return null;}, p1);
+         
+         Collection<Person> p2 = filter(x -> x.getGender().equals("female") && x.getAge()>= 65,p1); 
+         
          System.out.println();
-         print(p2);
+         print(map(Y -> Y.getEmail(), p2)); 
          
     }
 }
