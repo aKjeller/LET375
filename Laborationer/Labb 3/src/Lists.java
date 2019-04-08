@@ -111,13 +111,14 @@ public class Lists {
     
     // Testmetod: JunitListTest.testContains()
     public static boolean contains(ListNode head,char c) {
-    	ListNode p = head; 
-    	while(p.next != null) {
-    		if(p.element == c) {
+    	if(head == null)
+    		throw new ListsException("Lists: null passed to contains");
+    	ListNode p = head.next;
+    	while(p != null) {
+    		if(p.element == c) 
     			return true;
-    		}
-    	}
-    	
+    		p = p.next;
+    	}	
         return false;
     }
     

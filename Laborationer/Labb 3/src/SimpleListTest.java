@@ -11,19 +11,19 @@ public class SimpleListTest {
         print("l1",l1);
         
         
-//        // Test copy
-//        l2 = Lists.copy(l1);
-//        print("l2",l2);
-//        
+        // Test copy
+        l2 = Lists.copy(l1);
+        print("l2",l2);
+        
 //        // Test remove, addFirst and addLast
 //        Lists.removeAll(l2,'X');
 //        Lists.addFirst(Lists.addLast(l2,'P'),'S');
 //        print("l2",l2);
 //        print("l1",l1);
-//        
-//        // Test contains
-//        System.out.println(Lists.contains(l1,'X'));
-//        System.out.println(Lists.contains(l2,'X'));
+        
+        // Test contains
+        System.out.println(Lists.contains(l1,'X'));
+        System.out.println(Lists.contains(l2,'X'));
 //        
 //        // Test copyUpperCase
 //        l3 = Lists.copyUpperCase(l2);
