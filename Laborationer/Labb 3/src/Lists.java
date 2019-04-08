@@ -98,7 +98,15 @@ public class Lists {
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-         return null;
+    	if(l == null)
+    		throw new ListsException("Lists: null passed to toString");
+    	String result = "";
+    	ListNode p = l.next;
+    	while(p != null) {
+    		result = result + p.element;
+    		p = p.next;
+    	}
+        return result;
     }
     
     // Testmetod: JunitListTest.testContains()
