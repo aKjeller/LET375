@@ -33,12 +33,12 @@ public class SimpleListTest {
         l4 = Lists.reverse(l3);
         print("l4",l4);
         
-//        // Test concat
-//        Lists.concat(l3,Lists.toList("-i-"));
-//        Lists.concat(l3,l4);
-//        print("l3",l3);
-//        print("l4",l4);
-//       
+        // Test concat
+        Lists.concat(l3,Lists.toList("-i-"));
+        Lists.concat(l3,l4);
+        print("l3",l3);
+        print("l4",l4);
+       
 //        // Test addAll
 //        l5 = Lists.toList("-palindrom");
 //        Lists.addAll(l3,l5);
