@@ -131,10 +131,11 @@ public class Lists {
     public static ListNode addFirst(ListNode l,char c) {  
     	if(l == null)
     		throw new ListsException("Lists: null passed to addFirst");
-    	l.element = c;
-    	ListNode p = new ListNode();
-    	p.next = l;
-    	return p;
+    	ListNode temp = l.next;
+    	l.next = new ListNode();
+    	l.next.next = temp;
+    	l.next.element = c;
+    	return l;
     	
     }
          
@@ -142,11 +143,15 @@ public class Lists {
     private static ListNode getLastNode(ListNode head) {
     	if(head == null)
     		throw new ListsException("Lists: null passed to getLastNode");
+    	else if(head.next == null)
+    		return head;
+
     	ListNode p = head.next;
-    	while(p != null) {
+    	while(true) {
+    		if(p.next == null)
+    			return p;
     		p = p.next;
     	}	
-        return p;
     }
    
     // Testmetod: JunitListTest.testAddLast()
