@@ -29,10 +29,10 @@ public class SimpleListTest {
         l3 = Lists.copyUpperCase(l2);
         print("13",l3);
         
-//        // Test reverse
-//        l4 = Lists.reverse(l3);
-//        print("l4",l4);
-//        
+        // Test reverse
+        l4 = Lists.reverse(l3);
+        print("l4",l4);
+        
 //        // Test concat
 //        Lists.concat(l3,Lists.toList("-i-"));
 //        Lists.concat(l3,l4);

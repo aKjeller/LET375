@@ -135,7 +135,7 @@ public class Lists {
     	
     	while(p != null) {
     		if(Lists.contains(L, p.element)) {
-    			Lists.addFirst(Upper, p.element);	
+    			Lists.addLast(Upper, p.element);	
     		}
     		p = p.next;		
     	}	
@@ -192,6 +192,18 @@ public class Lists {
       
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
-        return null;
+    	if(head == null)
+    		throw new ListsException("Lists: null passed to copyUpperCase");
+    	
+    	ListNode p = head.next;
+    	ListNode rev = new ListNode();
+    	
+    	while(p != null) {
+    		Lists.addFirst(rev, p.element);
+    		p = p.next;		
+    	}	
+    	
+    
+        return rev;
     }
 }
