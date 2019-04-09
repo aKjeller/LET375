@@ -129,18 +129,17 @@ public class Lists {
     	if(head == null)
     		throw new ListsException("Lists: null passed to copyUpperCase");
     	
-    	ListNode L = Lists.toList("ABCDEFGHIJKLMNOPQRSTYZÅÄÖ");
     	ListNode p = head.next;
-    	ListNode Upper = new ListNode();
+    	ListNode upper = new ListNode();
     	
     	while(p != null) {
-    		if(Lists.contains(L, p.element)) {
-    			Lists.addLast(Upper, p.element);	
+    		if(Character.isUpperCase(p.element)) {
+    			Lists.addLast(upper, p.element);	
     		}
     		p = p.next;		
     	}	
     	
-        return Upper;
+        return upper;
     }
     
     // Testmetod: JunitListTest.testAddFirst()
