@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A collection of utility functions for C style primitive list handling.
  *
@@ -124,7 +126,19 @@ public class Lists {
     
     // Testmetod: JunitListTest.testCopyUpperCase()
     public static ListNode copyUpperCase(ListNode head) {
-        return null;
+    	if(head == null)
+    		throw new ListsException("Lists: null passed to copyUpperCase");
+    	
+    	ListNode L = Lists.toList("ABCDEFGHIJKLMNOPQRSTYZÅÄÖ");
+    	ListNode p = head.next;
+    	
+    	while(p != null) {
+    		if(Lists.contains(L, p.element)) 
+    			// skapa en lista som retuneras i result 
+    		p = p.next;
+    	}	
+    	
+        return result;
     }
     
     // Testmetod: JunitListTest.testAddFirst()
