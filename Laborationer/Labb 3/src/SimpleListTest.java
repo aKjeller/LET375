@@ -24,11 +24,11 @@ public class SimpleListTest {
         // Test contains
         System.out.println(Lists.contains(l1,'X'));
         System.out.println(Lists.contains(l2,'X'));
-//        
-//        // Test copyUpperCase
-//        l3 = Lists.copyUpperCase(l2);
-//        print("13",l3);
-//        
+        
+        // Test copyUpperCase
+        l3 = Lists.copyUpperCase(l2);
+        print("13",l3);
+        
 //        // Test reverse
 //        l4 = Lists.reverse(l3);
 //        print("l4",l4);

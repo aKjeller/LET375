@@ -131,14 +131,16 @@ public class Lists {
     	
     	ListNode L = Lists.toList("ABCDEFGHIJKLMNOPQRSTYZÅÄÖ");
     	ListNode p = head.next;
+    	ListNode Upper = new ListNode();
     	
     	while(p != null) {
-    		if(Lists.contains(L, p.element)) 
-    			// skapa en lista som retuneras i result 
-    		p = p.next;
+    		if(Lists.contains(L, p.element)) {
+    			Lists.addFirst(Upper, p.element);	
+    		}
+    		p = p.next;		
     	}	
     	
-        return result;
+        return Upper;
     }
     
     // Testmetod: JunitListTest.testAddFirst()
