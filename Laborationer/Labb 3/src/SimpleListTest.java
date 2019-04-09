@@ -39,10 +39,10 @@ public class SimpleListTest {
         print("l3",l3);
         print("l4",l4);
        
-//        // Test addAll
-//        l5 = Lists.toList("-palindrom");
-//        Lists.addAll(l3,l5);
-//        print("l3",l3);
-//        print("l5",l5);
+        // Test addAll
+        l5 = Lists.toList("-palindrom");
+        Lists.addAll(l3,l5);
+        print("l3",l3);
+        print("l5",l5);
     }
 }
