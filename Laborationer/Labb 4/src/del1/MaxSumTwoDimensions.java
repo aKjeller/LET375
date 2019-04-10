@@ -29,9 +29,10 @@ public class MaxSumTwoDimensions {
         						sum = sum + a[r3][c3];
         					}
         				}
-        				if(sum > max) {
-        					max = sum;
-        				}
+        				if(sum < 0)
+        					sum = 0;
+        				else if(sum > max) 
+        					max = sum;    				
         			}
         		}
         	}
