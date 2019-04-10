@@ -1,1 +1,1 @@
-Uppgift 1: Det stämmer, gjort flera test och får samma resultat varje gång, kan skilja +-10% vid varje test. 
+ï»¿Uppgift 1: Det stÃ¤mmer, gjort flera test och fÃ¥r samma resultat varje gÃ¥ng, kan skilja +-10% vid varje test. 
