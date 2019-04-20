@@ -42,14 +42,82 @@ public class MaxSumTwoDimensions {
  
     // O(n^5)
     public static int maxSubMatrixSumBetter( int[][] a ) {
-    	int max = 0;
-    	return max;
+    	int max = 0;  	
+        for(int r1 = 1; r1 <= a.length; r1++) {
+        	for(int c1 = 1; c1 <= a.length; c1++) {
+        		
+        		for(int r2 = 0; r2 <= a.length - r1; r2++) {
+        			int sum = 0; 
+        			for(int c2 = 0; c2 <= a.length - c1; c2++) {        				
+        				for(int r3 = r2; r3 < r2 + r1; r3++) {
+        					sum = sum + a[r3][c2];
+        				}
+        				if(sum < 0)
+        					sum = 0;
+        				else if(sum > max) 
+        					max = sum;    				
+        			}
+        		}
+        	}
+        }
+        return max;
     }
     
     // O(n^4)
     public static int maxSubMatrixSumEvenBetter( int[][] a ) {
-        // ...
-        return 0;
+    	int max = 0;   	
+    	for(int r1 = 0; r1 < a.length; r1++) {
+    		for(int r2 = r1; r2 < a.length; r2++) {
+    			int sum = 0;
+    			for(int c1 = 0; c1 < a.length; c1++) {
+    	    		for(int r3 = r1; r3 <= r2; r3++) {
+    					sum += a[r3][c1];
+    				}
+    	    		sum = Math.max(0, sum);
+    	    		max = Math.max(max, sum);
+    			}			
+    		}	
+    	}
+    	return max;
+    }
+    // O(n^3)!!!
+    public static int maxSubMatrixSumKjeller( int[][] a) {
+    	int[][] newMat = new int[a.length][a.length];
+    	for(int r1 = 0; r1 < a.length; r1++) {
+    		for(int c1 = 0; c1 < a.length; c1++) {
+    			if(r1 == 0)
+    				newMat[r1][c1] = a[r1][c1];
+    			else
+    				newMat[r1][c1] = newMat[r1 - 1][c1] + a[r1][c1];
+    		}			
+    	}
+    	
+    	int max = 0;
+    	for(int r1 = 0; r1 < a.length; r1++) {
+    		for(int r2 = r1; r2 < a.length; r2++) {			
+    			int[] sumArray = new int[a.length];			
+    			for(int c1 = 0; c1 < a.length; c1++) {
+    				if(r1 == 0)
+    					sumArray[c1] = newMat[r2][c1];
+    				else
+    					sumArray[c1] = newMat[r2][c1] -  newMat[r1 - 1][c1];
+    			}
+    			int sum = 0;
+    			for(int i = 0; i < sumArray.length; i++) {
+    	    		sum = Math.max(0, sum + sumArray[i]);
+    	    		max = Math.max(max, sum);
+    			}		
+    		}
+    	}  	
+    	return max;
+    }
+    private static void print(int[][] a) {
+    	for(int r1 = 0; r1 < a.length; r1++) {
+    		for(int c1 = 0; c1 < a.length; c1++) {
+    			System.out.print("  " + a[r1][c1]+ "  ");
+    		}
+    		System.out.println(); 			
+    	}
     }
     
     private static int[][] randMatrix(int m,int n) {
@@ -62,9 +130,10 @@ public class MaxSumTwoDimensions {
     
     private static void test(int[][] m) {
     	// Uncomment as you proceed!
+    	System.out.println("Kjeller: "+maxSubMatrixSumKjeller(m));
 //    	System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m));
-    	System.out.println("Better: "+maxSubMatrixSumBetter(m));
-        System.out.println("Bad: "+maxSubMatrixSumBad(m));
+//    	System.out.println("Better: "+maxSubMatrixSumBetter(m));
+//    	System.out.println("Bad: "+maxSubMatrixSumBad(m));
     }
     
     public static void main(String[] arg) {
@@ -77,7 +146,7 @@ public class MaxSumTwoDimensions {
             {-5,10,-2,1},
             {4,5,-7,1}
         };
-         test(sampleMatrix);
+//         test(sampleMatrix);
             
         int[][] matrix_10x10 = {    // max sum is 213
             {39,-33,-5,-21,-31,-33,31,32,37,-37},
@@ -118,10 +187,20 @@ public class MaxSumTwoDimensions {
 //         test(matrix_20x20);
         
         // Test the algorithms for random matrixes of increasing sizes.
-//        for ( int size = 1; size <= 2048; size *= 2 ) {
+        for ( int size = 1; size <= 2048; size *= 2 ) {
+            int[][] m = randMatrix(size,size);
+            System.out.println("\nSize = " + size);
+            test(m);
+        }
+        
+        
+//        while(true) {
+//        	int size = 10;
 //            int[][] m = randMatrix(size,size);
 //            System.out.println("\nSize = " + size);
 //            test(m);
 //        }
+        
+        
     }
 }
