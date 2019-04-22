@@ -30,7 +30,7 @@ public class UHWordSearch {
     private Search searchAlg;   
     private final boolean PRINT_WORDS = false;		// turns printing on/off
     private final boolean PREFIX_TESTING = false;	// turns prefix testing on/off, on => binary search
-    private boolean BINARY_SEARCH = false;			// true => binary search, false => linear search
+    private boolean BINARY_SEARCH = true;			// true => binary search, false => linear search
    
     /**
      * Constructor for WordSearch class.
@@ -142,7 +142,7 @@ public class UHWordSearch {
 
             try
             {
-                fileName = in.readLine( );
+                fileName = in.readLine( ) + ".txt";
                 if( fileName == null )
                      System.exit( 0 );
                 theFile = new FileReader( fileName );
