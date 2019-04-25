@@ -206,7 +206,7 @@ public class Lists {
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
     	if(head == null)
-    		throw new ListsException("Lists: null passed to copyUpperCase");
+    		throw new ListsException("Lists: null passed to reverse");
     	
     	ListNode p = head.next;
     	ListNode rev = new ListNode();
