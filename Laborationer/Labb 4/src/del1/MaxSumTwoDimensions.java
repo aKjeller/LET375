@@ -112,7 +112,7 @@ public class MaxSumTwoDimensions {
     	return max;
     }
     
-    private static int[][] randMatrix(int m,int n) {
+    public static int[][] randMatrix(int m,int n) {
         int[][] a = new int[m][n];
         for( int i = 0; i < m; i++ )
             for( int j = 0; j < n; j++ )
@@ -130,7 +130,11 @@ public class MaxSumTwoDimensions {
     
     public static void main(String[] arg) {
         // Three test cases with known answers
-        
+    	
+    	StressTest a = new StressTest(1);
+    	StressTest b = new StressTest(2);
+        a.start();
+        b.start();
         // This is the matrix in the lab PM.
         int[][] sampleMatrix = {     // max sum is 21
             {-1,-2,1,3},
@@ -138,7 +142,7 @@ public class MaxSumTwoDimensions {
             {-5,10,-2,1},
             {4,5,-7,1}
         };
-         test(sampleMatrix);
+//         test(sampleMatrix);
             
         int[][] matrix_10x10 = {    // max sum is 213
             {39,-33,-5,-21,-31,-33,31,32,37,-37},
@@ -152,7 +156,7 @@ public class MaxSumTwoDimensions {
             {17,-50,33,-21,-30,-44,-28,-12,-37,-6},
             {-35,35,-27,44,-42,24,36,43,-49,-46}
         };
-         test(matrix_10x10);
+//         test(matrix_10x10);
         
         int[][] matrix_20x20 = {    // max sum is 346
         	{39,19,39,21,-19,-40,-20,9,-29,42,-48,46,-7,31,-50,-41,5,11,30,23},
@@ -176,13 +180,13 @@ public class MaxSumTwoDimensions {
         	{-11,-9,-48,43,13,-47,-1,-32,-45,-10,-22,-26,36,20,-27,44,29,6,18,-28},
         	{28,46,46,-4,-6,-16,-38,-46,-49,-46,-38,-38,2,46,3,49,-12,-11,-9,31}
         };
-         test(matrix_20x20);
+//         test(matrix_20x20);
         
         // Test the algorithms for random matrixes of increasing sizes.
-        for ( int size = 1; size <= 2048; size *= 2 ) {
-            int[][] m = randMatrix(size,size);
-            System.out.println("\nSize = " + size);
-            test(m);
-        }
+//        for ( int size = 1; size <= 2048; size *= 2 ) {
+//            int[][] m = randMatrix(size,size);
+//            System.out.println("\nSize = " + size);
+//            test(m);
+//        }
     }
 }
