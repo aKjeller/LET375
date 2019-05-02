@@ -3,40 +3,55 @@ package del1;
 public class StressTest implements Runnable{
 	int alg = 0;
 	private Thread t;
-	private long result = 0;
 	private long average = 0;
+	private int testLength = 10000;
+	private int size = 256;
+	private int completed = 0;
 	
 	public StressTest(int alg) {
 		this.alg = alg;
 	}
 	public void printRes() {
-		System.out.println("Alg: " + alg + " has finished 10 500x500 matrixes in: " + result + "ms with an average of: " + average + "ms");
+		System.out.println("n^" + alg + " has finished " + completed + " matrixes with the size " + size + " with an average of " + average + "ms");
 	}
 	
 	@Override
-	public void run() {
-		System.out.println("Starting alg: " + alg);
+	public void run() {		
+		System.out.println("Starting alg n^" + alg);
 		long time = System.currentTimeMillis();
-		for ( int n = 1; n <= 1000; n++ ) {
-			int[][] m = MaxSumTwoDimensions.randMatrix(100,100);
-			if(alg == 1) {
+		for ( int n = 1; n <= testLength; n++ ) {
+			int[][] m = MaxSumTwoDimensions.randMatrix(size,size);
+			if(alg == 4) {
 				MaxSumTwoDimensions.maxSubMatrixSumEvenBetter(m);
-					System.out.println("alg: " + alg + " has finished: " + n + " matrixes");
 			}
 			else {
 				MaxSumTwoDimensions.maxSubMatrixSumLegendary(m);
-				if(n % 100 == 0)
-					System.out.println("alg: " + alg + " has finished: " + n + " matrixes");
 			}
+			average = (System.currentTimeMillis() - time) / n;
+			completed ++;
 		}
-		result = System.currentTimeMillis() - time;
-		average = result / 20;
-		printRes();
 	}
 	public void start() {
 		if (t == null) {
 			t = new Thread (this);
 			t.start ();
 		}
+	}
+	public static void main(String args[]) {
+    	StressTest a = new StressTest(3);
+    	StressTest b = new StressTest(4);
+        a.start();
+        b.start();
+        while(true) {
+        	try {
+				Thread.sleep(3000);
+				a.printRes();
+				b.printRes();
+				System.out.println("");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        	
+        }
 	}
 }
