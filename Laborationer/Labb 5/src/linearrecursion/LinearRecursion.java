@@ -19,22 +19,18 @@ public class LinearRecursion {
     public static int multiply(int m,int n) {
     	if(m == 0)
     		return 0;
-    	if(m < 0) {
+    	if(m < 0)
     		return -multiply(-m + 1,n) + n;
-    	}
-    	else {
+    	else 
     		return multiply(m - 1, n) + n;
-    	}
     } 
     
     
 // A.3
     public static int countDigits(int n) {
-    	n=n/10;
-    	if(n != 0) 
-       		return countDigits(n) + 1;
-    	else
-    		return 1; 
+    	if(n >= 10) 
+       		return countDigits(n/10) + 1;
+    	return 1; 
     }
            
     public static ListNode cons( int element, ListNode l ) {
@@ -60,8 +56,9 @@ public class LinearRecursion {
 
 // A.4
  public static ListNode copy( ListNode l ) {
-        // toDo 
-        return null;
+        if(l == null)
+        	return null;
+        return cons(l.element,copy(l.next));
  }
     
 // A.5  
@@ -82,7 +79,7 @@ public class LinearRecursion {
       System.out.println("\nTesting multiply:");
       System.out.println(multiply(5,7));
       System.out.println(multiply(-5,7));
-      System.out.println(multiply(-5,7));
+      System.out.println(multiply(5,-7));
       System.out.println(multiply(-5,-7));
       System.out.println(multiply(0,7));
       System.out.println(multiply(5,0));
@@ -106,12 +103,12 @@ public class LinearRecursion {
 //      System.out.println("of the lists in the ll array. Those lists must not be"); 
 //      System.out.println("changed by your functions."); 
 // A.4  
-//      System.out.println("\nTesting copy:");    
-//      for ( int i = 0; i < ll.length; i++ ) {
-//          ListNode copy = cons(999,copy(ll[i]));
-//          print("cons(999,copy(ll["+i+"]))",copy);       // result
-//          print("ll["+i+"]",ll[i]); // original should be untouched
-//      }
+      System.out.println("\nTesting copy:");    
+      for ( int i = 0; i < ll.length; i++ ) {
+          ListNode copy = cons(999,copy(ll[i]));
+          print("cons(999,copy(ll["+i+"]))",copy);       // result
+          print("ll["+i+"]",ll[i]); // original should be untouched
+      }
 // A.5     
 //         System.out.println("\nTesting append from left:"); 
 //         for ( int i = 0; i < ll.length - 1; i++ ) {
