@@ -63,8 +63,9 @@ public class LinearRecursion {
     
 // A.5  
  public static ListNode append( ListNode l1, ListNode l2 ) {
-        // toDo
-        return null;
+     if(l1 == null)
+     	return copy(l2);
+     return cons(l1.element,append(l1.next,l2));
  }
     
 /**********************************************
@@ -110,20 +111,20 @@ public class LinearRecursion {
           print("ll["+i+"]",ll[i]); // original should be untouched
       }
 // A.5     
-//         System.out.println("\nTesting append from left:"); 
-//         for ( int i = 0; i < ll.length - 1; i++ ) {
-//             ListNode appended = append(ll[i],ll[ll.length-1]);
-//             print("append(ll["+i+"],ll["+(ll.length-1)+"])",appended);       // result
-//             print("ll["+i+"]",ll[i]); // original should be untouched
-//             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
-//         }
-//         
-//         System.out.println("\nTesting append from right:"); 
-//         for ( int i = 0; i < ll.length - 1; i++ ) {
-//             ListNode appended = append(ll[ll.length-1],ll[i]);
-//             print("append(ll["+(ll.length-1)+"],ll["+i+"])",appended);       // result
-//             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
-//             print("ll["+i+"]",ll[i]); // original should be untouched
-//         }
+         System.out.println("\nTesting append from left:"); 
+         for ( int i = 0; i < ll.length - 1; i++ ) {
+             ListNode appended = append(ll[i],ll[ll.length-1]);
+             print("append(ll["+i+"],ll["+(ll.length-1)+"])",appended);       // result
+             print("ll["+i+"]",ll[i]); // original should be untouched
+             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
+         }
+         
+         System.out.println("\nTesting append from right:"); 
+         for ( int i = 0; i < ll.length - 1; i++ ) {
+             ListNode appended = append(ll[ll.length-1],ll[i]);
+             print("append(ll["+(ll.length-1)+"],ll["+i+"])",appended);       // result
+             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
+             print("ll["+i+"]",ll[i]); // original should be untouched
+         }
     }
 }
