@@ -7,15 +7,26 @@ import java.io.IOException;
  */
 public class LinearRecursion {
 // A.1
-    public static void reverseInput() {
-        // toDo 
+    public static void reverseInput() throws IOException {
+    	char C = (char)System.in.read();
+    	if(C != '\n') {
+    		reverseInput();
+    		System.out.print(C);
+    	}	
     }
         
 // A.2
     public static int multiply(int m,int n) {
-        // toDo 
-        return 0;
+    	if(m == 0)
+    		return 0;
+    	if(m < 0) {
+    		return -multiply(-m + 1,n) + n;
+    	}
+    	else {
+    		return multiply(m - 1, n) + n;
+    	}
     } 
+    
     
 // A.3
     public static int countDigits(int n) {
@@ -62,16 +73,16 @@ public class LinearRecursion {
  * ********************************************/
     public static void main(String[] args) throws IOException {
 // A.1
-     reverseInput();
-     System.out.println();
+//     reverseInput();
+//     System.out.println();
 // A.2
-//      System.out.println("\nTesting multiply:");
-//      System.out.println(multiply(5,7));
-//      System.out.println(multiply(-5,7));
-//      System.out.println(multiply(-5,7));
-//      System.out.println(multiply(-5,-7));
-//      System.out.println(multiply(0,7));
-//      System.out.println(multiply(5,0));
+      System.out.println("\nTesting multiply:");
+      System.out.println(multiply(5,7));
+      System.out.println(multiply(-5,7));
+      System.out.println(multiply(-5,7));
+      System.out.println(multiply(-5,-7));
+      System.out.println(multiply(0,7));
+      System.out.println(multiply(5,0));
 // A.3
 //      System.out.println("\nTesting countDigits:");
 //      System.out.println(countDigits(0));
