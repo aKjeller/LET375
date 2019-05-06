@@ -19,9 +19,10 @@ public class LinearRecursion {
     public static int multiply(int m,int n) {
     	if(m == 0)
     		return 0;
-    	if(m < 0)
+    	else if(m < 0)
     		return -multiply(-m + 1,n) + n;
-    	return multiply(m - 1, n) + n;
+    	else
+    		return multiply(m - 1, n) + n;
     } 
     
     
@@ -57,14 +58,16 @@ public class LinearRecursion {
  public static ListNode copy( ListNode l ) {
         if(l == null)
         	return null;
-        return cons(l.element,copy(l.next));
+        else
+        	return cons(l.element,copy(l.next));
  }
     
 // A.5  
  public static ListNode append( ListNode l1, ListNode l2 ) {
      if(l1 == null)
      	return copy(l2);
-     return cons(l1.element,append(l1.next,l2));
+     else
+    	 return cons(l1.element,append(l1.next,l2));
  }
     
 /**********************************************
