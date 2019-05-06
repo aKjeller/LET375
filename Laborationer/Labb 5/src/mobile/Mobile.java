@@ -46,9 +46,13 @@ public class Mobile {
     
     // Return the maximum height of the mobile
     public int getHeight() {
-        // ToDo
-        return 0;
-    }  
+    	int heightLeft = 1, heightRight = 1;
+    	if(this.left != null)
+    		heightLeft += this.left.getHeight();
+    	if(this.right != null)
+    		heightRight += this.right.getHeight();	
+    	return Math.max(heightLeft, heightRight);	
+    }   
 
     // Print the leaves of the mobile
     public void flatten()  {
@@ -89,35 +93,35 @@ public class Mobile {
         else
             System.out.println("Not balanced!");
 
-        /* Uncomment test cases as you proceed!
-        System.out.println("Height:     " + m.getHeight() );
+        System.out.println("Height m:     " + m.getHeight() );
+        System.out.println("Height m1:     " + m1.getHeight() );
         
-        m.flatten(); System.out.println();
-        
-        m.prettyPrint(); System.out.println();
+//        m.flatten(); System.out.println();
+//        
+//        m.prettyPrint(); System.out.println();
+//
+//        m.mirror();
+//        m.prettyPrint(); System.out.println();
+//        m.mirror();
+//        m.prettyPrint(); System.out.println();
+//        
+//        Mobile m22 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
+//        m3 = new Mobile( m1, 10, m22, 2 );
+//        if ( m.equals(m3) )
+//            System.out.println("Equal!");       // They should be!
+//        else
+//            System.out.println("Not equal!");
+//
+//        Mobile c = m.clone();
+//        if ( c.equals(m) )
+//            System.out.println("Equal!");       // They should be!
+//        else
+//            System.out.println("Not equal!");
+//
+//        if ( c == m )
+//            System.out.println("Identical!");   // They should definately not!
+//        else
+//            System.out.println("Not identical!");
 
-        m.mirror();
-        m.prettyPrint(); System.out.println();
-        m.mirror();
-        m.prettyPrint(); System.out.println();
-        
-        Mobile m22 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
-        m3 = new Mobile( m1, 10, m22, 2 );
-        if ( m.equals(m3) )
-            System.out.println("Equal!");       // They should be!
-        else
-            System.out.println("Not equal!");
-
-        Mobile c = m.clone();
-        if ( c.equals(m) )
-            System.out.println("Equal!");       // They should be!
-        else
-            System.out.println("Not equal!");
-
-        if ( c == m )
-            System.out.println("Identical!");   // They should definately not!
-        else
-            System.out.println("Not identical!");
-        */
     }
 }
