@@ -21,8 +21,7 @@ public class LinearRecursion {
     		return 0;
     	if(m < 0)
     		return -multiply(-m + 1,n) + n;
-    	else 
-    		return multiply(m - 1, n) + n;
+    	return multiply(m - 1, n) + n;
     } 
     
     
@@ -74,8 +73,8 @@ public class LinearRecursion {
  * ********************************************/
     public static void main(String[] args) throws IOException {
 // A.1
-//     reverseInput();
-//     System.out.println();
+     reverseInput();
+     System.out.println();
 // A.2
       System.out.println("\nTesting multiply:");
       System.out.println(multiply(5,7));
@@ -99,10 +98,10 @@ public class LinearRecursion {
             cons(4,cons(5,cons(6,null)))    // [4,5,6]
         };
         
-//      System.out.println("\nIn the test cases below, you should verify that"); 
-//      System.out.println("the ll[i] printouts are consistent with the definitions"); 
-//      System.out.println("of the lists in the ll array. Those lists must not be"); 
-//      System.out.println("changed by your functions."); 
+      System.out.println("\nIn the test cases below, you should verify that"); 
+      System.out.println("the ll[i] printouts are consistent with the definitions"); 
+      System.out.println("of the lists in the ll array. Those lists must not be"); 
+      System.out.println("changed by your functions."); 
 // A.4  
       System.out.println("\nTesting copy:");    
       for ( int i = 0; i < ll.length; i++ ) {
