@@ -79,7 +79,13 @@ public class Mobile {
     
     // Change this mobile to its mirror image
     public void mirror() {
-        // ToDo
+        if(!this.isSimple()) {
+        	Mobile temp = left;
+        	left = right;
+        	right = temp;
+        	left.mirror();
+        	right.mirror();
+        }
     }
     
     // Determine if this mobile equals obj
@@ -113,10 +119,11 @@ public class Mobile {
         
         m.prettyPrint(); System.out.println();
 //
-//        m.mirror();
-//        m.prettyPrint(); System.out.println();
-//        m.mirror();
-//        m.prettyPrint(); System.out.println();
+        m.mirror();
+        m.prettyPrint(); System.out.println();
+        m.flatten(); System.out.println();
+        m.mirror();
+        m.prettyPrint(); System.out.println();
 //        
 //        Mobile m22 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
 //        m3 = new Mobile( m1, 10, m22, 2 );
