@@ -56,12 +56,25 @@ public class Mobile {
 
     // Print the leaves of the mobile
     public void flatten()  {
-        // ToDo
+    	if(this.isSimple())
+    		System.out.print(this.weight + " ");
+    	else {
+    		this.left.flatten();
+    		this.right.flatten();
+    	}
     }  
 
     //  Print a structured view of the mobile
     public void prettyPrint() {
-        // ToDo
+    	if(this.isSimple())
+    		System.out.print("(" + this.weight + ")");
+    	else {
+    		System.out.print("[");
+    		this.left.prettyPrint();
+    		System.out.print( "," + this.leftLength + "," + this.rightLength + "," );
+    		this.right.prettyPrint();
+    		System.out.print("]");
+    	}
     }
     
     // Change this mobile to its mirror image
@@ -96,9 +109,9 @@ public class Mobile {
         System.out.println("Height m:     " + m.getHeight() );
         System.out.println("Height m1:     " + m1.getHeight() );
         
-//        m.flatten(); System.out.println();
-//        
-//        m.prettyPrint(); System.out.println();
+        m.flatten(); System.out.println();
+        
+        m.prettyPrint(); System.out.println();
 //
 //        m.mirror();
 //        m.prettyPrint(); System.out.println();
