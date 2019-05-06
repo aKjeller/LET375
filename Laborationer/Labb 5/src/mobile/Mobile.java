@@ -87,17 +87,14 @@ public class Mobile {
         	right.mirror();
         }
     }
-    
-    // Determine if this mobile equals obj
 
-    
     //  Return a clone of this mobile
     public Mobile clone() {
-        // .ToDo
-        return null;
+        if(this.isSimple())
+        	return new Mobile(this.weight);
+        else 
+        	return new Mobile(this.left.clone(), this.leftLength, this.right.clone(), this.rightLength);
     }
-
-
 
 	@Override
 	public int hashCode() {
@@ -159,15 +156,12 @@ public class Mobile {
             System.out.println("Not balanced!");
 
         System.out.println("Height m:     " + m.getHeight() );
-        System.out.println("Height m1:     " + m1.getHeight() );
         
         m.flatten(); System.out.println();
         
         m.prettyPrint(); System.out.println();
-//
         m.mirror();
         m.prettyPrint(); System.out.println();
-        m.flatten(); System.out.println();
         m.mirror();
         m.prettyPrint(); System.out.println();
         
@@ -178,16 +172,16 @@ public class Mobile {
         else
             System.out.println("Not equal!");
 
-//        Mobile c = m.clone();
-//        if ( c.equals(m) )
-//            System.out.println("Equal!");       // They should be!
-//        else
-//            System.out.println("Not equal!");
-//
-//        if ( c == m )
-//            System.out.println("Identical!");   // They should definately not!
-//        else
-//            System.out.println("Not identical!");
+        Mobile c = m.clone();
+        if ( c.equals(m) )
+            System.out.println("Equal!");       // They should be!
+        else
+            System.out.println("Not equal!");
+
+        if ( c == m )
+            System.out.println("Identical!");   // They should definately not!
+        else
+            System.out.println("Not identical!");
 
     }
 }
