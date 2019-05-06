@@ -89,10 +89,7 @@ public class Mobile {
     }
     
     // Determine if this mobile equals obj
-    public boolean equals( Object obj ) {
-        // ToDo
-        return false;
-    }
+
     
     //  Return a clone of this mobile
     public Mobile clone() {
@@ -100,7 +97,56 @@ public class Mobile {
         return null;
     }
 
-    public static void main(String[] args) {
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((left == null) ? 0 : left.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(leftLength);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((right == null) ? 0 : right.hashCode());
+		temp = Double.doubleToLongBits(rightLength);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		temp = Double.doubleToLongBits(weight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mobile other = (Mobile) obj;
+		if (left == null) {
+			if (other.left != null)
+				return false;
+		} else if (!left.equals(other.left))
+			return false;
+		if (Double.doubleToLongBits(leftLength) != Double.doubleToLongBits(other.leftLength))
+			return false;
+		if (right == null) {
+			if (other.right != null)
+				return false;
+		} else if (!right.equals(other.right))
+			return false;
+		if (Double.doubleToLongBits(rightLength) != Double.doubleToLongBits(other.rightLength))
+			return false;
+		if (type != other.type)
+			return false;
+		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
+			return false;
+		return true;
+	}
+
+	public static void main(String[] args) {
         Mobile  m1 = new Mobile( 1 ),
         m2 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
         m = new Mobile( m1, 10, m2, 2 );
@@ -124,14 +170,14 @@ public class Mobile {
         m.flatten(); System.out.println();
         m.mirror();
         m.prettyPrint(); System.out.println();
-//        
-//        Mobile m22 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
-//        m3 = new Mobile( m1, 10, m22, 2 );
-//        if ( m.equals(m3) )
-//            System.out.println("Equal!");       // They should be!
-//        else
-//            System.out.println("Not equal!");
-//
+        
+        Mobile m22 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
+        m3 = new Mobile( m1, 10, m22, 2 );
+        if ( m.equals(m3) )
+            System.out.println("Equal!");       // They should be!
+        else
+            System.out.println("Not equal!");
+
 //        Mobile c = m.clone();
 //        if ( c.equals(m) )
 //            System.out.println("Equal!");       // They should be!
