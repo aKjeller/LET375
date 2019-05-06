@@ -1,7 +1,5 @@
 package mobile;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 // Version: 2019-04-29
 public class Mobile {
     private enum MobileType { SIMPLE, COMPOSITE }
