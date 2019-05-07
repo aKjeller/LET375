@@ -5,13 +5,13 @@ public class ConcaveKoch extends Flake {
 	public void draw(Turtle turtle,int n,double size) {
 		this.turtle = turtle;
 		turtle.turnTo(0.0);
-		// Draw a triangular structure of three fractals
-		turtle.turn(-60.0);
+		// Draw a triangular structure of three fractals		
 		drawSide(n,size);
-		turtle.turn(120.0);
+		turtle.turn(-120.0);
 		drawSide(n,size);
-		turtle.turn(120.0);
+		turtle.turn(-120.0);
 		drawSide(n,size);	
+		turtle.turn(-60.0);
 	}
 
 	private void drawSide(int n,double size) {
@@ -20,11 +20,11 @@ public class ConcaveKoch extends Flake {
 		else {
 			double l = size/3.0;
 			drawSide(n-1,l);
-			turtle.turn(60.0);
+			turtle.turn(-60.0);
 			drawSide(n-1,l);
 			turtle.turn(120);
 			drawSide(n-1,l);
-			turtle.turn(60);
+			turtle.turn(-60);
 			drawSide(n-1,l);
 		}
 	}
