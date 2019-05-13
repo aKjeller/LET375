@@ -1,6 +1,9 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.geom.*;
+import java.io.ObjectStreamClass;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,7 +26,7 @@ public class BoardDisplay extends Board implements Observer {
 		gridSize = ( gdRow < gdCol ? gdRow : gdCol );
 		// compute offset to center it
 		rowOffset = (height-maxRow*gridSize)/2 + 2;
-		colOffset = (width-maxCol*gridSize)/2 + 2;
+		colOffset = (width-maxCol*gridSize)/2 + 2; 
 	}
 	
 	private void drawGrid() {
@@ -31,7 +34,10 @@ public class BoardDisplay extends Board implements Observer {
 			myLine( 0, row*gridSize, maxCol*gridSize, row*gridSize, lineColor );
 		for ( int col = 0; col <= maxCol; col++ )
 			myLine( col*gridSize, 0, col*gridSize, maxRow*gridSize, lineColor );
-		
+		knockDownWall(0, Point.Direction.UP);
+		knockDownWall(0, Point.Direction.LEFT);
+		knockDownWall(maxCell-1, Point.Direction.DOWN);
+		knockDownWall(maxCell-1, Point.Direction.RIGHT);
 	}
 	
 	private void fillCell( int cellId ) {
@@ -78,8 +84,16 @@ public class BoardDisplay extends Board implements Observer {
 		canvas.setForegroundColour(c);
 		canvas.drawLine( colOffset + c1, rowOffset + r1, colOffset + c2, rowOffset + r2 );
 	}
-	    
+
+	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
-//		 Develop this method!
+		if(o instanceof Maze) {
+			if( arg instanceof HashMap <?,?> ) {
+				drawGrid(); 			
+				for(Map.Entry<Integer, Point.Direction> entry : ((HashMap<Integer, Point.Direction> ) arg).entrySet()) {
+					knockDownWall(entry.getKey(), entry.getValue());					
+				}
+			}
+		}
 	}
 }
