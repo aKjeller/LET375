@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.TreeSet;
 
 public class BoardDisplay extends Board implements Observer {
 	
@@ -34,10 +35,6 @@ public class BoardDisplay extends Board implements Observer {
 			myLine( 0, row*gridSize, maxCol*gridSize, row*gridSize, lineColor );
 		for ( int col = 0; col <= maxCol; col++ )
 			myLine( col*gridSize, 0, col*gridSize, maxRow*gridSize, lineColor );
-		knockDownWall(0, Point.Direction.UP);
-		knockDownWall(0, Point.Direction.LEFT);
-		knockDownWall(maxCell-1, Point.Direction.DOWN);
-		knockDownWall(maxCell-1, Point.Direction.RIGHT);
 	}
 	
 	private void fillCell( int cellId ) {
@@ -90,8 +87,9 @@ public class BoardDisplay extends Board implements Observer {
 		if(o instanceof Maze) {
 			if( arg instanceof HashMap <?,?> ) {
 				drawGrid(); 			
-				for(Map.Entry<Integer, Point.Direction> entry : ((HashMap<Integer, Point.Direction> ) arg).entrySet()) {
-					knockDownWall(entry.getKey(), entry.getValue());					
+				for(Map.Entry<Integer, TreeSet<Point.Direction>> entry : ((HashMap<Integer, TreeSet<Point.Direction>> ) arg).entrySet()) {
+					for(Point.Direction dirr: entry.getValue())
+						knockDownWall(entry.getKey(), dirr);					
 				}
 			}
 		}
