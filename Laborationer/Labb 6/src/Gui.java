@@ -92,8 +92,7 @@ public class Gui
      * Display a graphical search through the maze.
      */
     private void searchMaze(){
-    	showMessage("Fake search"); // Please remove!
-//    	Develop this method!
+    	maze.search();
     }
       
     // ---- Swing stuff to build the frame and all its components and menus ----
