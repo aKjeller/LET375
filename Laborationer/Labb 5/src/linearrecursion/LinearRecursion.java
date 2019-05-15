@@ -8,10 +8,10 @@ import java.io.IOException;
 public class LinearRecursion {
 // A.1
     public static void reverseInput() throws IOException {
-    	char C = (char)System.in.read();
-    	if(C != '\n') {
+    	char c = (char)System.in.read();
+    	if(c != '\n') {
     		reverseInput();
-    		System.out.print(C);
+    		System.out.print(c);
     	}	
     }
         
@@ -55,20 +55,20 @@ public class LinearRecursion {
     }
 
 // A.4
- public static ListNode copy( ListNode l ) {
+    public static ListNode copy( ListNode l ) {
         if(l == null)
         	return null;
         else
         	return cons(l.element,copy(l.next));
- }
+    }
     
 // A.5  
- public static ListNode append( ListNode l1, ListNode l2 ) {
-     if(l1 == null)
-     	return copy(l2);
-     else
-    	 return cons(l1.element,append(l1.next,l2));
- }
+	 public static ListNode append( ListNode l1, ListNode l2 ) {
+	     if(l1 == null)
+	     	return copy(l2);
+	     else
+	    	 return cons(l1.element,append(l1.next,l2));
+	 }
     
 /**********************************************
  * Some test cases.
