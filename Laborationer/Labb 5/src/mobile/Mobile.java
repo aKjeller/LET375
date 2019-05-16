@@ -80,7 +80,10 @@ public class Mobile {
         if(!this.isSimple()) {
         	Mobile temp = left;
         	left = right;
-        	right = temp;
+        	right = temp;    	
+        	double tempb = leftLength;
+        	leftLength = rightLength;
+        	rightLength = tempb;
         	left.mirror();
         	right.mirror();
         }
