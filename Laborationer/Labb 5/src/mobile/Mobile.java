@@ -116,13 +116,19 @@ public class Mobile {
 
 	@Override
 	public boolean equals(Object obj) {
+		//Self
 		if (this == obj)
 			return true;
+		//null
 		if (obj == null)
 			return false;
+		//type
 		if (getClass() != obj.getClass())
 			return false;
+		//cast and compare state
 		Mobile other = (Mobile) obj;
+		if (type != other.type)
+			return false;
 		if (left == null) {
 			if (other.left != null)
 				return false;
@@ -136,8 +142,6 @@ public class Mobile {
 		} else if (!right.equals(other.right))
 			return false;
 		if (Double.doubleToLongBits(rightLength) != Double.doubleToLongBits(other.rightLength))
-			return false;
-		if (type != other.type)
 			return false;
 		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
 			return false;
