@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -14,14 +15,13 @@ public class Maze extends Board {
 	public void create() {	
 		int numberOfSets = maxCell;
 		DisjointSets wallSet = new DisjointSets(numberOfSets);
+		soonNotWalls.put(0,new TreeSet<Point.Direction>());
+		soonNotWalls.get(0).add(Point.Direction.UP);
+		soonNotWalls.get(0).add(Point.Direction.LEFT);
 		
-//		soonNotWalls.put(0,new TreeSet<Point.Direction>());
-//		soonNotWalls.get(0).add(Point.Direction.UP);
-//		soonNotWalls.get(0).add(Point.Direction.LEFT);
-//		
-//		soonNotWalls.put(maxCell-1,new TreeSet<Point.Direction>());
-//		soonNotWalls.get(maxCell-1).add(Point.Direction.DOWN);
-//		soonNotWalls.get(maxCell-1).add(Point.Direction.RIGHT);
+		soonNotWalls.put(maxCell-1,new TreeSet<Point.Direction>());
+		soonNotWalls.get(maxCell-1).add(Point.Direction.DOWN);
+		soonNotWalls.get(maxCell-1).add(Point.Direction.RIGHT);
 			
 		while(numberOfSets > 1) {		
 			Point.Direction dirr = randomDirr();
@@ -56,19 +56,20 @@ public class Maze extends Board {
 	}
     
     public void search() {
-    	Graph graph = new Graph();
+    	ExtendedGraph graph = new ExtendedGraph();
     	for(Map.Entry<Integer, TreeSet<Point.Direction>> entry : soonNotWalls.entrySet()) {
 			for(Point.Direction dirr: entry.getValue()) {
 				Point p2 = new Point(getRow(entry.getKey()), getCol(entry.getKey()));
 				p2.move(dirr);
 				graph.addEdge(entry.getKey(), getCellId(p2), 2.0);
 				graph.addEdge(getCellId(p2),entry.getKey(), 2.0);
-				System.out.println("Cell: " + entry.getKey()+ " dirr: " + dirr + " p2: " + getCellId(p2));
-			}							
+			}					
 		}
-    	graph.printPath(maxCell-1);
-    	
+    	graph.unweighted(0);
+    	ArrayList<Integer> path = (ArrayList<Integer>) graph.getPath(maxCell-1);
+    	for(int i: path) {
+    		setChanged();
+    		notifyObservers(i);
+    	}
     }
-    
-//    ...
 }

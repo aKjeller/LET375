@@ -92,6 +92,9 @@ public class BoardDisplay extends Board implements Observer {
 						knockDownWall(entry.getKey(), dirr);					
 				}
 			}
+			else if(arg instanceof Integer) {
+				fillCell((Integer)arg);
+			}
 		}
 	}
 }
