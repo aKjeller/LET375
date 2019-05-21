@@ -51,7 +51,7 @@ public class Maze extends Board {
 				case 1: return Point.Direction.RIGHT;
 				case 2: return Point.Direction.DOWN;
 				case 3: return Point.Direction.LEFT;
-				default: return Point.Direction.UP;	
+				default: return Point.Direction.ERROR;	
 			}
 	}
     

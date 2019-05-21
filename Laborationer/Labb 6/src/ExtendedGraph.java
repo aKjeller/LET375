@@ -7,8 +7,10 @@ public class ExtendedGraph extends Graph {
 		 Vertex w = vertexMap.get( destName );
 		 if( w == null )
 			 throw new NoSuchElementException( "Destination vertex not found" );
-		 else if( w.dist == INFINITY )
+		 else if( w.dist == INFINITY ) {
 			 System.out.println( destName + " is unreachable" );
+			 return null;
+		 }
 		 return getPath( w );
 	}
 	private List<Integer> getPath( Vertex dest ) {

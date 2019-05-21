@@ -127,25 +127,19 @@ public class Mobile {
 			return false;
 		//cast and compare state
 		Mobile other = (Mobile) obj;
-		if (type != other.type)
-			return false;
-		if (left == null) {
-			if (other.left != null)
+		if (this.isSimple() && other.isSimple()) {
+			if(Double.compare(this.weight, other.weight) == 0)
+				return true;
+		}
+		else if(!this.isSimple() && !other.isSimple()) {
+			if(!left.equals(other.left) || !right.equals(other.right))
 				return false;
-		} else if (!left.equals(other.left))
-			return false;
-		if (Double.doubleToLongBits(leftLength) != Double.doubleToLongBits(other.leftLength))
-			return false;
-		if (right == null) {
-			if (other.right != null)
+			if(Double.compare(leftLength, other.leftLength) != 0 || Double.compare(rightLength, other.rightLength) != 0)
 				return false;
-		} else if (!right.equals(other.right))
-			return false;
-		if (Double.doubleToLongBits(rightLength) != Double.doubleToLongBits(other.rightLength))
-			return false;
-		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
-			return false;
-		return true;
+			return true;
+		}
+		return false;
+			
 	}
 
 	public static void main(String[] args) {
