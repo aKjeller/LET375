@@ -24,12 +24,12 @@ public class Main {
 		t.right.right.element = 'F';
 		
 		print(findPaths(null,'E'));  	// Expected: [] 
-		print(findPaths(t,'A'));   	// Expected: [""] 
-		print(findPaths(t,'B'));   	// Expected: ["0"] 
-		print(findPaths(t,'C'));   	// Expected: ["1"] 
-		print(findPaths(t,'D'));   	// Expected: ["00"] 
-		print(findPaths(t,'E'));   	// Expected: ["01"] 
-		print(findPaths(t,'F'));   	// Expected: ["11"]       
+		print(findPaths(t,'A'));   		// Expected: [""] 
+		print(findPaths(t,'B'));   		// Expected: ["0"] 
+		print(findPaths(t,'C'));   		// Expected: ["1"] 
+		print(findPaths(t,'D'));   		// Expected: ["00"] 
+		print(findPaths(t,'E'));   		// Expected: ["01"] 
+		print(findPaths(t,'F'));   		// Expected: ["11"]       
 		print(findPaths(t,'X'));      	// Expected: ["011","10"]   
 	}
 	
