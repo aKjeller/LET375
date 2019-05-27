@@ -23,14 +23,19 @@ public class Main {
 		t.right.right = new TreeNode();
 		t.right.right.element = 'F';
 		
-		findPaths(null,'E');  	// Expected: [] 
-		findPaths(t,'A');   	// Expected: [""] 
-		findPaths(t,'B');   	// Expected: ["0"] 
-		findPaths(t,'C');   	// Expected: ["1"] 
-		findPaths(t,'D');   	// Expected: ["00"] 
-		findPaths(t,'E');   	// Expected: ["01"] 
-		findPaths(t,'F');   	// Expected: ["11"]       
-		findPaths(t,'X');      	// Expected: ["011","10"]   
+		print(findPaths(null,'E'));  	// Expected: [] 
+		print(findPaths(t,'A'));   	// Expected: [""] 
+		print(findPaths(t,'B'));   	// Expected: ["0"] 
+		print(findPaths(t,'C'));   	// Expected: ["1"] 
+		print(findPaths(t,'D'));   	// Expected: ["00"] 
+		print(findPaths(t,'E'));   	// Expected: ["01"] 
+		print(findPaths(t,'F'));   	// Expected: ["11"]       
+		print(findPaths(t,'X'));      	// Expected: ["011","10"]   
+	}
+	
+	public static void print(List<String> s) {
+		for(String str : s)
+			System.out.println(str);
 	}
 	
 	public static List<String> findPaths(TreeNode t,char x){
