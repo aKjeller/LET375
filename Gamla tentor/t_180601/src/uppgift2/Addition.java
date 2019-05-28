@@ -6,7 +6,7 @@ public class Addition extends AbstractBinaryExpression {
 	}
 	public String toString() {
 		/* TODO */ 
-		return null;
+		return "(" + this.leftOperand.toString() + " + " + this.rightOperand.toString() + ")";
 	}
 	public Expression simplify() {
 		/* TODO */ 
