@@ -6,11 +6,15 @@ public class Multiplication extends AbstractBinaryExpression {
 		super(leftOperand,rightOperand);
 	}	
 	public String toString() { 
-		/* TODO */ 
-		return null;
+		return "(" + this.leftOperand.toString() + "*" + this.rightOperand.toString() + ")";
 	}
 	public Expression simplify() {
-		/* TODO */ 
-		return null;
+		if(this.leftOperand.isOne())
+			return this.rightOperand.simplify();
+		if(this.rightOperand.isOne())
+			return this.leftOperand.simplify();
+		if(this.leftOperand.isZero() || this.rightOperand.isZero())
+			return new Constant("0");
+		return new Multiplication(this.leftOperand.simplify(), this.rightOperand.simplify());
 	}
 }

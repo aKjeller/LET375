@@ -15,8 +15,8 @@ public class Main {
 		Expression e4 = new Multiplication(one,e1);
 		Expression e5 = new Multiplication(e2,zero);
 		Expression e6 = new Addition(e4,e5);
-//		System.out.println(e6); 				//Utskrift: ((1*(0 + x)) + ((y + 0)*0))
-//		System.out.println(e6.simplify()); 		//Utskrift: x
+		System.out.println(e6); 				//Utskrift: ((1*(0 + x)) + ((y + 0)*0))
+		System.out.println(e6.simplify()); 		//Utskrift: x
 	}
 
 }
