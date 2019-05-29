@@ -19,7 +19,9 @@ public class Mobile {
 	
 	// Composite case.
 	public Mobile(Mobile left, Mobile right) { 
-		// Implement! }
+		this.type = MobileType.COMPOSITE;
+		this.left = left;
+		this.right = right;
 	}
 	
 	// Determines if this mobile is simple.
