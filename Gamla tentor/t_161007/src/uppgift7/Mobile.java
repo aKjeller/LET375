@@ -1,6 +1,9 @@
 package uppgift7;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Mobile {
 	public static int ROD_LENGTH = 10;
@@ -22,6 +25,9 @@ public class Mobile {
 		this.type = MobileType.COMPOSITE;
 		this.left = left;
 		this.right = right;
+		this.weight = left.weight + right.weight;
+		this.leftLength = ROD_LENGTH * right.weight / this.weight;
+		this.rightLength = ROD_LENGTH - leftLength;	
 	}
 	
 	// Determines if this mobile is simple.
@@ -42,7 +48,41 @@ public class Mobile {
 	
 	// Returns a balanced mobile constructed from the given weights.
 	public static Mobile build(List<Integer> weights) { 
-		// Implement!
-		return null;
+		if(weights == null || weights.isEmpty())
+			return null;
+		if(weights.size() == 1)
+			return new Mobile(weights.get(0));		
+		Collections.sort(weights);
+		Mobile a = null;
+		for(int i : weights) {
+			if(a == null)
+				a = new Mobile(i);
+			else {
+				Mobile b = new Mobile(i);
+				a = new Mobile(a,b);		
+			}	
+		}	
+		return a;
 	}
+	
+    public void flatten()  {
+    	if(this.isSimple())
+    		System.out.print(this.weight + " ");
+    	else {
+    		this.left.flatten();
+    		this.right.flatten();
+    	}
+    } 
+    
+    public void prettyPrint() {
+    	if(this.isSimple())
+    		System.out.print("(" + this.weight + ")");
+    	else {
+    		System.out.print("[");
+    		this.left.prettyPrint();
+    		System.out.print( "," + this.leftLength + "," + this.rightLength + "," );
+    		this.right.prettyPrint();
+    		System.out.print("]");
+    	}
+    }
 }
